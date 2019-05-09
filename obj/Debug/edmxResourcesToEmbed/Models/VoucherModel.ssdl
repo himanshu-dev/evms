@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VoucherModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CVoucher">
+    <Key>
+      <PropertyRef Name="VoucherID" />
+    </Key>
+    <Property Name="VoucherID" Type="int" Nullable="false" />
+    <Property Name="SubmittedBy" Type="varchar" MaxLength="50" />
+    <Property Name="Amount" Type="money" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="SubmitDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MAVoucher">
+    <Key>
+      <PropertyRef Name="VoucherID" />
+    </Key>
+    <Property Name="VoucherID" Type="int" Nullable="false" />
+    <Property Name="SubmittedBy" Type="varchar" MaxLength="50" />
+    <Property Name="LeaveDuration" Type="int" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="SubmitDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PBVoucher">
+    <Key>
+      <PropertyRef Name="VoucherID" />
+    </Key>
+    <Property Name="VoucherID" Type="int" Nullable="false" />
+    <Property Name="SubmittedBy" Type="varchar" MaxLength="50" />
+    <Property Name="Amount" Type="money" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="SubmitDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TAVoucher">
+    <Key>
+      <PropertyRef Name="VoucherID" />
+    </Key>
+    <Property Name="VoucherID" Type="int" Nullable="false" />
+    <Property Name="SubmittedBy" Type="varchar" MaxLength="50" />
+    <Property Name="Destination" Type="varchar(max)" />
+    <Property Name="LeaveDuration" Type="int" />
+    <Property Name="SubmitDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Voucher">
+    <Key>
+      <PropertyRef Name="VoucherID" />
+    </Key>
+    <Property Name="VoucherID" Type="int" Nullable="false" />
+    <Property Name="SubmittedBy" Type="varchar" MaxLength="50" />
+    <Property Name="VoucherType" Type="varchar" MaxLength="50" />
+    <Property Name="SubmitDate" Type="datetime" />
+    <Property Name="StatusByDM" Type="varchar" MaxLength="50" />
+    <Property Name="StatusByFSO" Type="varchar" MaxLength="50" />
+    <Property Name="EmployeeID" Type="int" />
+  </EntityType>
+  <EntityContainer Name="VoucherModelStoreContainer">
+    <EntitySet Name="CVoucher" EntityType="Self.CVoucher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MAVoucher" EntityType="Self.MAVoucher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PBVoucher" EntityType="Self.PBVoucher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TAVoucher" EntityType="Self.TAVoucher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Voucher" EntityType="Self.Voucher" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

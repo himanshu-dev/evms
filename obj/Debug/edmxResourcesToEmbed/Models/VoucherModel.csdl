@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VoucherModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="VoucherEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="CVouchers" EntityType="VoucherModel.CVoucher" />
+    <EntitySet Name="Vouchers" EntityType="VoucherModel.Voucher" />
+    <EntitySet Name="MAVouchers" EntityType="VoucherModel.MAVoucher" />
+    <EntitySet Name="PBVouchers" EntityType="VoucherModel.PBVoucher" />
+    <EntitySet Name="TAVouchers" EntityType="VoucherModel.TAVoucher" />
+  </EntityContainer>
+  <EntityType Name="CVoucher">
+    <Key>
+      <PropertyRef Name="VoucherID" />
+    </Key>
+    <Property Name="VoucherID" Type="Int32" Nullable="false" />
+    <Property Name="SubmittedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="SubmitDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Voucher">
+    <Key>
+      <PropertyRef Name="VoucherID" />
+    </Key>
+    <Property Name="VoucherID" Type="Int32" Nullable="false" />
+    <Property Name="SubmittedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="VoucherType" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="SubmitDate" Type="DateTime" Precision="3" />
+    <Property Name="StatusByDM" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="StatusByFSO" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="EmployeeID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="MAVoucher">
+    <Key>
+      <PropertyRef Name="VoucherID" />
+    </Key>
+    <Property Name="VoucherID" Type="Int32" Nullable="false" />
+    <Property Name="SubmittedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LeaveDuration" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SubmitDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="PBVoucher">
+    <Key>
+      <PropertyRef Name="VoucherID" />
+    </Key>
+    <Property Name="VoucherID" Type="Int32" Nullable="false" />
+    <Property Name="SubmittedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SubmitDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TAVoucher">
+    <Key>
+      <PropertyRef Name="VoucherID" />
+    </Key>
+    <Property Name="VoucherID" Type="Int32" Nullable="false" />
+    <Property Name="SubmittedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Destination" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="LeaveDuration" Type="Int32" />
+    <Property Name="SubmitDate" Type="DateTime" Precision="3" />
+  </EntityType>
+</Schema>

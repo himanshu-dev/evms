@@ -1,0 +1,59 @@
+@model IEnumerable<MvcApplication1.Models.Voucher>
+
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_EMPLayout.cshtml";
+        var Vouchers = @ViewBag.Vouchers;
+    }
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.VoucherID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VoucherType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SubmitDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StatusByDM)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StatusByFSO)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Vouchers)
+            {
+                <tr>
+                    <td>
+                        #00-@item.VoucherID
+                    </td>
+                    <td>
+                        @item.VoucherType
+                    </td>
+                    <td>
+                        @item.SubmitDate
+                    </td>
+                    <td>
+                        <b style="margin-left:2px;">
+                            @item.StatusByDM
+                        </b>
+                    </td>
+                    <td>
+                        <b style="margin-left:2px;">
+                            @item.StatusByFSO
+                        </b>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @section childLayout{
+        @Html.Partial("_childLayoutApproved")
+    }

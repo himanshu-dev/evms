@@ -1,0 +1,25 @@
+﻿@using (Ajax.BeginForm("SelectVoucher", "Voucher", new AjaxOptions
+{
+    UpdateTargetId = "res",
+    HttpMethod = "POST",
+    InsertionMode = InsertionMode.Replace,
+    OnFailure = "SearchFailed",
+    OnSuccess = "SearchSuccess"
+}, htmlAttributes: new { @class = "form-inline" }))
+{
+    <select class="form-control drpwidth" id="VoucherType" name="VoucherType">
+        <option>Cash Voucher</option>
+        <option>Travel Allowance Voucher</option>
+        <option>Medical Allowance Voucher</option>
+        <option>Phone Bill Voucher</option>
+    </select>
+            <input data-toggle="modal" data-target="#myModal" id="btnTake" type="submit" class="btn btn-default" value="Take" />
+
+}
+<span id="failMessage"></span>
+<hr />
+<ul class="nav nav-tabs">
+    <li id="tab1" class="active"><a href="/Voucher/Index">All</a></li>
+    <li id="tab2"><a href="/Voucher/Approved">Approved</a></li>
+    <li id="tab3"><a href="/Voucher/Rejected">Rejected</a></li>
+</ul>

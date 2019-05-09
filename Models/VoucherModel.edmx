@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="VoucherModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CVoucher">
+          <Key>
+            <PropertyRef Name="VoucherID" />
+          </Key>
+          <Property Name="VoucherID" Type="int" Nullable="false" />
+          <Property Name="SubmittedBy" Type="varchar" MaxLength="50" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="SubmitDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MAVoucher">
+          <Key>
+            <PropertyRef Name="VoucherID" />
+          </Key>
+          <Property Name="VoucherID" Type="int" Nullable="false" />
+          <Property Name="SubmittedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LeaveDuration" Type="int" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="SubmitDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PBVoucher">
+          <Key>
+            <PropertyRef Name="VoucherID" />
+          </Key>
+          <Property Name="VoucherID" Type="int" Nullable="false" />
+          <Property Name="SubmittedBy" Type="varchar" MaxLength="50" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="SubmitDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TAVoucher">
+          <Key>
+            <PropertyRef Name="VoucherID" />
+          </Key>
+          <Property Name="VoucherID" Type="int" Nullable="false" />
+          <Property Name="SubmittedBy" Type="varchar" MaxLength="50" />
+          <Property Name="Destination" Type="varchar(max)" />
+          <Property Name="LeaveDuration" Type="int" />
+          <Property Name="SubmitDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Voucher">
+          <Key>
+            <PropertyRef Name="VoucherID" />
+          </Key>
+          <Property Name="VoucherID" Type="int" Nullable="false" />
+          <Property Name="SubmittedBy" Type="varchar" MaxLength="50" />
+          <Property Name="VoucherType" Type="varchar" MaxLength="50" />
+          <Property Name="SubmitDate" Type="datetime" />
+          <Property Name="StatusByDM" Type="varchar" MaxLength="50" />
+          <Property Name="StatusByFSO" Type="varchar" MaxLength="50" />
+          <Property Name="EmployeeID" Type="int" />
+        </EntityType>
+        <EntityContainer Name="VoucherModelStoreContainer">
+          <EntitySet Name="CVoucher" EntityType="Self.CVoucher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MAVoucher" EntityType="Self.MAVoucher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PBVoucher" EntityType="Self.PBVoucher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TAVoucher" EntityType="Self.TAVoucher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Voucher" EntityType="Self.Voucher" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VoucherModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="VoucherEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="CVouchers" EntityType="VoucherModel.CVoucher" />
+          <EntitySet Name="Vouchers" EntityType="VoucherModel.Voucher" />
+          <EntitySet Name="MAVouchers" EntityType="VoucherModel.MAVoucher" />
+          <EntitySet Name="PBVouchers" EntityType="VoucherModel.PBVoucher" />
+          <EntitySet Name="TAVouchers" EntityType="VoucherModel.TAVoucher" />
+        </EntityContainer>
+        <EntityType Name="CVoucher">
+          <Key>
+            <PropertyRef Name="VoucherID" />
+          </Key>
+          <Property Name="VoucherID" Type="Int32" Nullable="false" />
+          <Property Name="SubmittedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="SubmitDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Voucher">
+          <Key>
+            <PropertyRef Name="VoucherID" />
+          </Key>
+          <Property Name="VoucherID" Type="Int32" Nullable="false" />
+          <Property Name="SubmittedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="VoucherType" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="SubmitDate" Type="DateTime" Precision="3" />
+          <Property Name="StatusByDM" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="StatusByFSO" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="EmployeeID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MAVoucher">
+          <Key>
+            <PropertyRef Name="VoucherID" />
+          </Key>
+          <Property Name="VoucherID" Type="Int32" Nullable="false" />
+          <Property Name="SubmittedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LeaveDuration" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SubmitDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PBVoucher">
+          <Key>
+            <PropertyRef Name="VoucherID" />
+          </Key>
+          <Property Name="VoucherID" Type="Int32" Nullable="false" />
+          <Property Name="SubmittedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SubmitDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TAVoucher">
+          <Key>
+            <PropertyRef Name="VoucherID" />
+          </Key>
+          <Property Name="VoucherID" Type="Int32" Nullable="false" />
+          <Property Name="SubmittedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Destination" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LeaveDuration" Type="Int32" />
+          <Property Name="SubmitDate" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VoucherModelStoreContainer" CdmEntityContainer="VoucherEntities">
+          <EntitySetMapping Name="CVouchers">
+            <EntityTypeMapping TypeName="VoucherModel.CVoucher">
+              <MappingFragment StoreEntitySet="CVoucher">
+                <ScalarProperty Name="VoucherID" ColumnName="VoucherID" />
+                <ScalarProperty Name="SubmittedBy" ColumnName="SubmittedBy" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SubmitDate" ColumnName="SubmitDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vouchers">
+            <EntityTypeMapping TypeName="VoucherModel.Voucher">
+              <MappingFragment StoreEntitySet="Voucher">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="VoucherID" ColumnName="VoucherID" />
+                <ScalarProperty Name="SubmittedBy" ColumnName="SubmittedBy" />
+                <ScalarProperty Name="VoucherType" ColumnName="VoucherType" />
+                <ScalarProperty Name="SubmitDate" ColumnName="SubmitDate" />
+                <ScalarProperty Name="StatusByDM" ColumnName="StatusByDM" />
+                <ScalarProperty Name="StatusByFSO" ColumnName="StatusByFSO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MAVouchers">
+            <EntityTypeMapping TypeName="VoucherModel.MAVoucher">
+              <MappingFragment StoreEntitySet="MAVoucher">
+                <ScalarProperty Name="SubmitDate" ColumnName="SubmitDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LeaveDuration" ColumnName="LeaveDuration" />
+                <ScalarProperty Name="SubmittedBy" ColumnName="SubmittedBy" />
+                <ScalarProperty Name="VoucherID" ColumnName="VoucherID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PBVouchers">
+            <EntityTypeMapping TypeName="VoucherModel.PBVoucher">
+              <MappingFragment StoreEntitySet="PBVoucher">
+                <ScalarProperty Name="SubmitDate" ColumnName="SubmitDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="SubmittedBy" ColumnName="SubmittedBy" />
+                <ScalarProperty Name="VoucherID" ColumnName="VoucherID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TAVouchers">
+            <EntityTypeMapping TypeName="VoucherModel.TAVoucher">
+              <MappingFragment StoreEntitySet="TAVoucher">
+                <ScalarProperty Name="SubmitDate" ColumnName="SubmitDate" />
+                <ScalarProperty Name="LeaveDuration" ColumnName="LeaveDuration" />
+                <ScalarProperty Name="Destination" ColumnName="Destination" />
+                <ScalarProperty Name="SubmittedBy" ColumnName="SubmittedBy" />
+                <ScalarProperty Name="VoucherID" ColumnName="VoucherID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

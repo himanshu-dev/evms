@@ -1,0 +1,12 @@
+﻿.drpwidth {
+    width:auto;
+}
+.radioFormat{
+    height:20px;
+    width:20px;
+}
+.radioLabelFormat{
+    font-size:16px;
+    line-height:29px;
+    font-weight:bold;
+}

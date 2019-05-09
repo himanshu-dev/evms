@@ -1,0 +1,58 @@
+﻿@model MvcApplication1.Models.CVoucher
+@using MvcApplication1.Controllers
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_EMPLayout.cshtml";
+    var vtype = VoucherController.VoucherType;
+    var name = VoucherController.cvoucher.SubmittedBy;
+    var amount = VoucherController.cvoucher.Amount;
+    var description = VoucherController.cvoucher.Description;
+}
+
+<h4>Edit</h4>
+
+<form action="/Voucher/TAV_Edit" method="post" name="formcvedit">
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "Enter valid information", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2" for="SubmittedBy">Submitted By</label>
+            <div class="col-md-6">
+                <input class="text-box form-control" id="SubmittedBy" name="SubmittedBy" type="text" value="@name" disabled>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="VoucherType">Voucher Type</label>
+            <div class="col-md-6">
+                <input class="text-box form-control" id="VoucherType" name="VoucherType" type="text" value="@vtype" disabled>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Amount">Amount</label>
+            <div class="col-md-6">
+                <input class="text-box form-control" data-val="true" data-val-number="The field Amount must be a number." id="Amount" name="Amount" type="number" value="@amount" required>
+                <span ng-show="formcvedit.Amount.$untouched && formcvedit.Amount.$invalid">The name is required.</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Description">Description</label>
+            <div class="col-md-6">
+                <input class="text-box form-control" id="Description" name="Description" type="text" value="@description" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-6">
+                <input id="btnSave_cv" type="submit" value="Save" formaction="/Voucher/Edit" class="btn btn-default" />
+                <input type="submit" value="Back" formaction="/Voucher/Index" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+    @section childLayout{
+        @Html.Partial("_childLayout")
+    }
+    

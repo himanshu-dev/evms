@@ -1,0 +1,56 @@
+﻿@model MvcApplication1.Models.TAVoucher
+@using MvcApplication1.Controllers
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_EMPLayout.cshtml";
+    var vtype = VoucherController.VoucherType;
+    var name = VoucherController.tavoucher.SubmittedBy;
+    var lduration = VoucherController.tavoucher.LeaveDuration;
+    var destination = VoucherController.tavoucher.Destination;
+}
+
+<h4>Edit</h4>
+
+<form action="/Voucher/TAV_Edit" method="post" id="formcvedit">
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "Enter valid information", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2" for="SubmittedBy">Submitted By</label>
+            <div class="col-md-6">
+                <input class="text-box form-control" id="SubmittedBy" name="SubmittedBy" type="text" value="@name" disabled>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="VoucherType">Voucher Type</label>
+            <div class="col-md-6">
+                <input class="text-box form-control" id="VoucherType" name="VoucherType" type="text" value="@vtype" disabled>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="LeaveDuration">Leave Duration(Days)</label>
+            <div class="col-md-6">
+                <input class="text-box form-control" id="LeaveDuration" name="LeaveDuration" type="number" value="@lduration" data-val="true" data-val-number="The field leave duration must be a number." required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Destination">Destination</label>
+            <div class="col-md-6">
+                <input class="text-box form-control" id="Destination" name="Destination" type="text" value="@destination" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-6">
+                <input type="submit" value="Save" formaction="/Voucher/Edit" class="btn btn-default" />
+                <input type="button" value="Back" formaction="/Voucher/Index" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+    @section childLayout{
+        @Html.Partial("_childLayout")
+    }

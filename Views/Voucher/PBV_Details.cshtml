@@ -1,0 +1,80 @@
+@using MvcApplication1.Controllers
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_EMPLayout.cshtml";
+    var vtype = VoucherController.VoucherType;
+    var name = VoucherController.pbvoucher.SubmittedBy;
+    var amount = VoucherController.pbvoucher.Amount;
+    var description = VoucherController.pbvoucher.Description;
+    var voucherId = VoucherController.voucher_send.VoucherID;
+    var status_dm_pbv = VoucherController.voucher_send.StatusByDM;
+    var status_fso_pbv = VoucherController.voucher_send.StatusByFSO;
+    var Submitdate = VoucherController.voucher_send.SubmitDate;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "Enter valid information", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2" for="VoucherID">Voucher Id</label>
+            <div class="col-md-6">
+                <input class="text-box form-control" readonly="readonly" id="VoucherID" name="VoucherID" type="text" value="@voucherId" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="SubmittedBy">Submitted By</label>
+            <div class="col-md-6">
+                <input class="text-box form-control" readonly="readonly" id="SubmittedBy" name="SubmittedBy" type="text" value="@name" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="VoucherType">Voucher Type</label>
+            <div class="col-md-6">
+                <input class="text-box form-control" readonly="readonly" id="VoucherType" name="VoucherType" type="text" value="@vtype" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Amount">Amount</label>
+            <div class="col-md-6">
+                <input class="text-box form-control" readonly="readonly" data-val="true" data-val-number="The field Amount must be a number." id="Amount" name="Amount" type="text" value="@amount">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="SubmissionDate">Submission Date</label>
+            <div class="col-md-6">
+                <input class="text-box form-control" readonly="readonly" id="SubmissionDate" name="SubmissionDate" type="datetime" value="@Submitdate">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Description">Description</label>
+            <div class="col-md-6">
+                <input class="text-box form-control" readonly="readonly" id="Description" name="Description" type="text" value="@description">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Description">Approval Status(DM)</label>
+            <div class="col-md-6">
+                <input class="text-box form-control" readonly="readonly" type="text" value="@status_dm_pbv">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Description">Approval Status(FSO)</label>
+            <div class="col-md-6">
+                <input class="text-box form-control" readonly="readonly" type="text" value="@status_fso_pbv">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-6">
+                <input type="submit" value="OK" formaction="/Voucher/Index" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@section childLayout{
+    @Html.Partial("_childLayout")
+}

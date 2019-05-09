@@ -1,0 +1,78 @@
+﻿@{
+    var userName = "";
+    if (MvcApplication1.Controllers.RegistrationController.UserName == "")
+    {
+        userName = MvcApplication1.Controllers.RegistrationController.UserName;
+    }
+    else
+    {
+        userName = "";
+    }
+    var loginStatus = MvcApplication1.Controllers.RegistrationController.LoginStatus;
+}
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - VMS</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                @Html.ActionLink("Voucher Management System", "Login", "Registration", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+
+            </ul>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                @if (loginStatus)
+                {
+                    <li>
+                        <a href="/Registration/Logout" class="glyphicon glyphicon-log-out">Log Out</a>
+                        @*@Html.ActionLink("Log Out", "Logout", "Registration", new { @class= "glyphicon glyphicon-log-out" })*@
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a href="/Registration/Login" class = "glyphicon glyphicon-log-in">Log In</a>
+                        @*@Html.ActionLink("Log In", "Login", "Registration", new { @class = "glyphicon glyphicon-log-in"})*@
+                    </li>
+                    <li>
+                        <a href="/Registration/Register" class="glyphicon glyphicon-log-in">Register</a>
+                        @*@Html.ActionLink("Register", "Register", "Registration", new { @class="glyphicon glyphicon-user"})*@
+                    </li>
+                }
+            </ul>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                </ul>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content" >
+        <br/><br/>
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Generic Pharmaceuticals Inc.</p>
+        </footer>
+    </div>
+    
+    <script src="~/Scripts/MyScript.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+@using MvcApplication1.Controllers
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_EMPLayout.cshtml";
+    var vtype = VoucherController.VoucherType;
+    var name = VoucherController.mavoucher.SubmittedBy;
+    var lduration = VoucherController.mavoucher.LeaveDuration;
+    var description = VoucherController.mavoucher.Description;
+    var voucherId = VoucherController.voucher_send.VoucherID;
+    var status_dm_mav = VoucherController.voucher_send.StatusByDM;
+    var status_fso_mav = VoucherController.voucher_send.StatusByFSO;
+    var Submitdate = VoucherController.voucher_send.SubmitDate;
+    var EmpId = VoucherController.voucher_send.EmployeeID;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "Enter valid information", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2" for="VoucherID">Voucher Id</label>
+            <div class="col-md-6">
+                <input class="text-box form-control" readonly="readonly" id="VoucherID" name="VoucherID" type="text" value="@voucherId" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="VoucherID">Employee Id</label>
+            <div class="col-md-6">
+                <input class="text-box form-control" readonly="readonly" id="EmployeeID" name="EmployeeID" type="text" value="@EmpId">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="SubmittedBy">Employee Name</label>
+            <div class="col-md-6">
+                <input class="text-box form-control" readonly="readonly" id="SubmittedBy" name="SubmittedBy" type="text" value="@name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="VoucherType">Voucher Type</label>
+            <div class="col-md-6">
+                <input class="text-box form-control" readonly="readonly" id="VoucherType" name="VoucherType" type="text" value="@vtype">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="LeaveDuration">Leave Duration(Days)</label>
+            <div class="col-md-6">
+                <input class="text-box form-control" readonly="readonly" id="LeaveDuration" name="LeaveDuration" type="number" value="@lduration">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="SubmissionDate">Submission Date</label>
+            <div class="col-md-6">
+                <input class="text-box form-control" readonly="readonly" id="SubmissionDate" name="SubmissionDate" type="datetime" value="@Submitdate">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Description">Description</label>
+            <div class="col-md-6">
+                <input class="text-box form-control" readonly="readonly" id="Description" name="Description" type="text" value="@description">
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-6">
+                <label class="radio-inline">
+                    <input type="radio" name="optradio_MAV" id="opt_mav_unseen" value="Unseen">Unseen
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="optradio_MAV" id="opt_mav_approve" value="Approve">Approve
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="optradio_MAV" id="opt_mav_reject" value="Reject">Reject
+                </label>
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-6">
+                <input type="submit" value="Done" formaction="/Voucher/DM_Edit" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+    $(document).ready(function () {
+        if("@status_dm_mav" == "Unseen"){
+            $("#opt_mav_unseen").attr("checked","checked");
+        }
+        else if("@status_dm_mav" == "Approved"){
+            $("#opt_mav_approve").attr("checked","checked");
+        }
+        else if("@status_dm_mav" == "Rejected"){
+            $("#opt_mav_reject").attr("checked","checked");
+        }
+        $("[name^='optradio']").addClass("radioFormat");
+        $("[name^='optradio']").parent().addClass("radioLabelFormat");
+    })
+</script>
+
+@section childLayout{
+    @Html.Partial("_childLayoutDm")
+}
